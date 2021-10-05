@@ -1,0 +1,25 @@
+
+
+[
+  {
+    "id": 1,
+    "image": "img",
+    "name": "Chickpae's salad",
+    "price": 7,
+    "desc": "Served with fires and drinks"
+  },
+  {
+    "id": 2,
+    "image": "img1",
+    "name": "Mighty Burger",
+    "price": 8,
+    "desc": "Served with fires and drinks"
+  },
+  {
+    "id": 3,
+    "image": "img2",
+    "name": "Chickpae's wrap",
+    "price": 3,
+    "desc": "Served with fires and drinks"
+  }
+]
