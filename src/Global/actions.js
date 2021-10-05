@@ -36,7 +36,7 @@ const actions = createSlice({
     handleQTY: (state, { payload }) => {
       const cartValue = state.cart.findIndex((el) => el.id === payload.id);
       // let viwAData = state.cart[cartValue].QTY;
-      if (state.cart[cartValue].QTY >= 1) {
+      if (state.cart[cartValue].QTY > 1) {
         state.cart[cartValue].QTY -= 1;
       } else if (state.cart[cartValue].QTY === 1) {
         state.cart = state.cart.filter((item) => item.id !== payload.id);

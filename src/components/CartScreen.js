@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   addProduct,
@@ -7,53 +7,62 @@ import {
   handleQTY,
 } from "../Global/actions";
 import { useDispatch, useSelector } from "react-redux";
+import Fade from "react-reveal/Fade";
 
 const CartScreen = () => {
   const data = useSelector((state) => state.myReducer.cart);
   const dispatch = useDispatch();
 
+  const [toggle, setToggle] = useState(false);
+
+  const onToggle = () => {
+    setToggle(!toggle);
+  };
+
   return (
     <Container>
       <Wrapper>
         {data?.map((props) => (
-          <Card>
-            <Image src={props.image} />
-            <Content>
-              <Title>{props.title}</Title>
-              <Desc>desc</Desc>
-              <Price>
-                <span>{Math.ceil(props.price * props.QTY)}</span>
-                {/* <Button bg>Add to Cart</Button> */}
-                <InputQTY>
-                  <Div
-                    bg
+          <Fade big opposite when={toggle}>
+            <Card>
+              <Image src={props.image} />
+              <Content>
+                <Title>{props.title}</Title>
+                <Desc>desc</Desc>
+                <Price>
+                  <span>{Math.ceil(props.price * props.QTY)}</span>
+                  {/* <Button bg>Add to Cart</Button> */}
+                  <InputQTY>
+                    <Div
+                      bg
+                      onClick={() => {
+                        console.log("Heelo");
+                        dispatch(handleQTY(props));
+                      }}
+                    >
+                      -
+                    </Div>
+                    <MyValue>{props.QTY}</MyValue>
+                    <Div
+                      onClick={() => {
+                        dispatch(addToCart(props));
+                      }}
+                    >
+                      +
+                    </Div>
+                  </InputQTY>
+                  <Button
+                    // disabled={props.QTY === 1}
                     onClick={() => {
-                      console.log("Heelo");
-                      dispatch(handleQTY(props));
+                      dispatch(removeFromCart(props));
                     }}
                   >
-                    -
-                  </Div>
-                  <MyValue>{props.QTY}</MyValue>
-                  <Div
-                    onClick={() => {
-                      dispatch(addToCart(props));
-                    }}
-                  >
-                    +
-                  </Div>
-                </InputQTY>
-                <Button
-                  // disabled={props.QTY === 1}
-                  onClick={() => {
-                    dispatch(removeFromCart(props));
-                  }}
-                >
-                  Remove From Cart
-                </Button>
-              </Price>
-            </Content>
-          </Card>
+                    Remove From Cart
+                  </Button>
+                </Price>
+              </Content>
+            </Card>
+          </Fade>
         ))}
       </Wrapper>
     </Container>

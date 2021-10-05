@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "img": "assets/buy.png",
+    "name": "Mighty Burger",
+    "price": 4,
+    "desc": "Served with fires and drinks"
+  },
+  {
+    "id": 2,
+    "img": "assets/buy1.png",
+    "name": "Chickpae's salad",
+    "price": 5,
+    "desc": "Served with fires and drinks"
+  },
+  {
+    "id": 3,
+    "img": "assets/buy2.png",
+    "name": "Chickpae's wrap",
+    "price": 6,
+    "desc": "Served with fires and drinks"
+  }
+]
